@@ -27,7 +27,7 @@ class GoogleController extends Controller
      */
     public function handleGoogleCallback()
     {
-        // try {
+        try {
             info("come");
             $googleUser = Socialite::driver('google')->stateless()->user();
             info("come");
@@ -53,31 +53,9 @@ class GoogleController extends Controller
                 return redirect()->intended('dashboard');
             }
       
-            // $user = Socialite::driver('google')->user();
-       
-            // $finduser = User::where('google_id', $user->id)->first();
-       
-            // if($finduser){
-       
-            //     Auth::login($finduser);
-      
-            //     return redirect()->intended('dashboard');
-       
-            // }else{
-            //     $newUser = User::create([
-            //         'name' => $user->name,
-            //         'email' => $user->email,
-            //         'google_id'=> $user->id,
-            //     ]);
-      
-            //     Auth::login($newUser);
-      
-            //     return redirect()->intended('dashboard');
-            // }
-      
-        // } catch (Exception $e) {
-        //     info("herer");
-        //     dd($e->getMessage());
-        // }
+        } catch (Exception $e) {
+            info("herer");
+            dd($e->getMessage());
+        }
     }
 }

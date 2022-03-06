@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\FacebookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,16 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-
+/**
+ * google login route
+ * 
+ */
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+/**
+ * facebook login route
+ * 
+ */
+Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook']);
+Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
